@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { User, Lock, Droplets, Mail, Eye, EyeOff } from 'lucide-react';
@@ -39,10 +39,12 @@ export const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, {
         username,
         password
       });
@@ -143,6 +145,8 @@ export const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+
+
   const handleRegister = async (e) => {
     e.preventDefault();
     
@@ -152,7 +156,7 @@ export const Register = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/auth/register', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, {
         username: formData.username,
         email: formData.email,
         password: formData.password

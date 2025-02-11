@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Login, Register } from './components/Authentication';
-import DashboardLayout from './pages/dashboard';
+import DashboardLayout from './pages/Dashboard';
 
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem('token');

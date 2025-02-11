@@ -1,4 +1,4 @@
-// backend/server.js
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/database');
@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // URL frontend Vite default
+    origin: process.env.CORS_ORIGIN, // URL frontend dari environment variable
     methods: ["GET", "POST"]
   }
 });
