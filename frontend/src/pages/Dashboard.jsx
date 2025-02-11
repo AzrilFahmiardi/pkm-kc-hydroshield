@@ -29,6 +29,13 @@ const DashboardLayout = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  };
+
   // Simulated real-time water level data
   const waterLevelData = [
     { time: '00:00', level: 2.5, flowRate: 150, risk: 'low' },
@@ -101,7 +108,7 @@ const DashboardLayout = () => {
           
           <nav className="space-y-2">
             <button
-              onClick={() => setActiveSection('dashboard')}
+              onClick={() => handleSectionChange('dashboard')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'dashboard' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
@@ -110,7 +117,7 @@ const DashboardLayout = () => {
               <span>Dashboard</span>
             </button>
             <button
-              onClick={() => setActiveSection('floodAlerts')}
+              onClick={() => handleSectionChange('floodAlerts')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'floodAlerts' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
@@ -119,7 +126,7 @@ const DashboardLayout = () => {
               <span>Flood Alerts</span>
             </button>
             <button
-              onClick={() => setActiveSection('areaMap')}
+              onClick={() => handleSectionChange('areaMap')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'areaMap' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
@@ -128,7 +135,7 @@ const DashboardLayout = () => {
               <span>Area Map</span>
             </button>
             <button
-              onClick={() => setActiveSection('pumpControl')}
+              onClick={() => handleSectionChange('pumpControl')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'pumpControl' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
@@ -137,7 +144,7 @@ const DashboardLayout = () => {
               <span>Pump Control</span>
             </button>
             <button
-              onClick={() => setActiveSection('history')}
+              onClick={() => handleSectionChange('history')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'history' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
@@ -147,7 +154,7 @@ const DashboardLayout = () => {
             </button>
             
             <button
-              onClick={() => setActiveSection('settings')}
+              onClick={() => handleSectionChange('settings')}
               className={`flex items-center space-x-3 p-3 rounded-lg w-full text-left ${
                 activeSection === 'settings' ? 'bg-blue-50 text-blue-700' : 'hover:bg-gray-50'
               }`}
