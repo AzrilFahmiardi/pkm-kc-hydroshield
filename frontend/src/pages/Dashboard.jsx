@@ -7,16 +7,19 @@ import PumpControl from '../components/PumpControl';
 import HistoryComponent from '../components/History';
 import AreaMap from '../components/AreaMap';
 import Setting from '../components/Setting';
+import { Spinner } from '../components/Spinner'; // Import Spinner component
 
 const DashboardLayout = () => {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('dashboard');
+  const [loading, setLoading] = useState(true); // Add loading state
   const navigate = useNavigate();
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
     setUser(userData);
+    setLoading(false); // Set loading to false after data is fetched
   }, []);
 
   const handleLogout = () => {
@@ -58,6 +61,14 @@ const DashboardLayout = () => {
     }
     return null;
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Spinner /> {/* Display loading spinner */}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
